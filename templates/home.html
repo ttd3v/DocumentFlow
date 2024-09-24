@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DocumentFlow</title>
+    <link rel="icon" href="{{url_for('static',filename='images/documentflow.png')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='/home.css')}}">
+</head>
+<body>
+  <span class="create-project-window-off" id="ppw">
+    <button class="create-project-window-backsensor" id="cpwb"></button>
+    <div class="cpw">
+      <img class="cpw-icon" id="cpwimg" alt="" src="{{url_for('static',filename='images/documentflow.png')}}">
+      <form method="POST">
+        <select class="cpw-input" name="doctype" id="cpwi">
+          <option class="cpw-input-option" value="Text">Text</option>
+          <option class="cpw-input-option"  value="Json">Json</option>
+          <option class="cpw-input-option"  value="Csv">Csv</option>
+        </select>
+        <input class="cpw-input" name='docname' type="text" placeholder="Document name">
+        <input class="cpw-input" id="submit-button-identifier" type="submit">
+      </form>
+    </div>
+  </span>
+  <span class="project-info-window-off" id="piw">
+    
+    <button class="leave-piw" id="lpiw"></button>
+    <div class="piw-frame" id="on">
+      <h1 class="piwframe-title">Info</h1>
+      <button class="piwframe-edit" id="edit">
+        <img class="piwf-icon" alt="" src="{{url_for('static',filename='images/file-edit.png')}}">
+        <p class="piwf-title">Edit document</p>
+      </button>
+      <button class="piwframe-edit" id="url">
+        <img class="piwf-icon" alt="" src="{{url_for('static',filename='images/url_icon.png')}}">
+        <p class="piwf-title">Document address</p>
+      </button>
+      <button class="piwframe-edit" id="delete">
+        <img class="piwf-icon" alt="" src="{{url_for('static',filename='images/trash_1.png')}}">
+        <p class="piwf-title" id="delete">Delete document</p>
+      </button>
+    </div>
+    </div>
+  </span>
+  <div class="topbar">
+    <img alt="" class="topbar-image" src="{{url_for('static',filename='images/documentflow.png')}}">
+    <p class="topbar-title">DocumentFlow</p>
+  </div>
+  <div class="topbar-back"></div>
+  <div class="frame-create-document">
+    <p class="frame-create-document-title">Create a new document</p>
+    <div class="frame-create-document-grid">
+    <div class="frame-create-document-element" id="Text">
+      <img class="frame-create-document-image" alt="docs" src="{{url_for('static',filename='images/poll-h.png')}}">
+      <div class="frame-create-document-line"></div>
+      <p class="frame-create-document-info">Text</p>
+    </div>
+    <div class="frame-create-document-element" id="Json">
+      <img class="frame-create-document-image" alt="docs" src="{{url_for('static',filename='images/brackets-curly.png')}}">
+      <div class="frame-create-document-line"></div>
+      <p class="frame-create-document-info">Json</p>
+    </div>
+    <div class="frame-create-document-element" id="Csv">
+      <img class="frame-create-document-image" alt="docs" src="{{url_for('static',filename='images/file-csv.png')}}">
+      <div class="frame-create-document-line"></div>
+      <p class="frame-create-document-info">Csv</p>
+    </div>
+    </div>
+  </div>
+  <div class="projects" id="projects">
+    
+  </div>
+  <script>
+    let images = {
+    "Text" : "{{url_for('static',filename='images/poll-h.png')}}",
+    "Json" : "{{url_for('static',filename='images/brackets-curly.png')}}",
+    "Form" : "{{url_for('static',filename='images/ballot-check.png')}}",
+    "Csv" : "{{url_for('static',filename='images/file-csv.png')}}",
+    "dots" : "{{url_for('static',filename='images/menu-dots-vertical_1.png')}}",
+  }
+  </script>
+  <script>let docs_info = {{context.documents | tojson}}</script>
+  <script src="{{url_for('static', filename='/home_script.js')}}"></script>
+</body>
+</html>

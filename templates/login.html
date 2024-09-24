@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocumentFlow</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='login.css')}}"></link>
+    <link rel="icon" href="https://cdn.discordapp.com/attachments/1281726161986261053/1281726213592846357/documentflow.png?ex=66dcc40e&is=66db728e&hm=fa98283c76558394887d06df22753698705c68b3a4a492ee09374e02f6ce48b3&">
+</head>
+<body>
+    <div class="error-info" id="error-info"><p class="error-info-value"></p></div>
+    <div class="main-frame">
+        <h1 class="main-frame-title">Login</h1>
+        <form method="post" class="main-frame-form">
+            <input id="email_input" type="text", autocomplete="off", placeholder="Email" name="Email">
+            <input id="password_input" type="password", autocomplete="off", placeholder="Password" name="Password">
+            <input type="submit">
+            <a href="register">Register instead</a>
+        </form>
+    </div>
+    <script src="{{url_for('static', filename='login_script.js')}}"></script>
+</body>
+</html>

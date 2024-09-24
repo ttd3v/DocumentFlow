@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DocumentFlow</title>
+    <link rel="icon" href="{{url_for('static', filename='images/documentflow.png')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='Editor(Text).css')}}">
+</head>
+<body>
+    <div class="topbar">
+        <a href="/"><img alt="" class="topbar-image" src="{{url_for('static', filename='images/documentflow.png')}}"></a>
+        <input class="topbar-title" value="{{context.documentName}}" name="document-title" id="project-name-editor">
+        <a class="download-link" href="/download/{{context.downloadfile}}"><img class="download-icon" src="{{url_for('static',filename='images/down-to-line.png')}}"></a>
+    </div>
+    <div class="topbar__"></div>
+    <div class="editor-frame">
+    <textarea id="eft" class="ef-textarea">{{context.documentContent}}</textarea>
+    </div>
+    <script src="{{url_for('static', filename='Editor(Text).js')}}"></script>
+</body>
+</html>

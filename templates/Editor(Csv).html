@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DocumentFlow</title>
+    <link rel="icon" href="{{url_for('static', filename='images/documentflow.png')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='Editor(Csv).css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jspreadsheet-ce@4.9.0/dist/jspreadsheet.css">
+</head>
+<body>
+    <div class="topbar">
+        <a href="/"><img alt="" class="topbar-image" src="{{url_for('static', filename='images/documentflow.png')}}"></a>
+        <input class="topbar-title" value="{{context.documentName}}" name="document-title" id="project-name-editor">
+        <a class="download-link" href="/download/{{context.downloadfile}}"><img class="download-icon" src="{{url_for('static',filename='images/down-to-line.png')}}"></a>
+    </div>
+    <div class="topbar__"></div>
+    <div class="editor-frame" id="ef">
+    </div>
+    
+    <script>
+        let json_content = JSON.parse(`{{context.documentContent | safe}}`);
+    </script>
+    <script src="{{url_for('static', filename='Editor(Csv).js')}}"></script>
+</body>
+</html>

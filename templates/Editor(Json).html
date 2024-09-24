@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DocumentFlow</title>
+    <link rel="icon" href="{{url_for('static', filename='images/documentflow.png')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='Editor(Json).css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+    
+</head>
+<body>
+    <style>
+        .CodeMirror {
+            height: auto;
+            border: 1px solid rgb(17, 17, 20);
+            font-family: monospace;
+            font-size: 14px;
+        }
+    </style>
+    <div class="topbar">
+        <a href="/"><img alt="" class="topbar-image" src="{{url_for('static', filename='images/documentflow.png')}}"></a>
+        <input class="topbar-title" value="{{context.documentName}}" name="document-title" id="project-name-editor">
+        <a class="download-link" href="/download/{{context.downloadfile}}"><img class="download-icon" src="{{url_for('static',filename='images/down-to-line.png')}}"></a>
+    </div>
+    <div class="topbar__"></div>
+    <div class="editor-frame" id="ef">
+    <textarea  contenteditable="true" id="editor" class="ef-textarea"></textarea>
+    </div>
+    
+    <script>
+        // Inicializando o editor CodeMirror
+        let txt_area =  document.createElement('textarea');
+        txt_area.innerHTML = `{{context.documentContent|safe}}}`
+        let default_content = txt_area.value;
+        var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+            lineNumbers: true,        // Exibir números das linhas
+            mode: "application/json", // Definir a linguagem para JSON
+            theme: "twilight",         // Você pode trocar por temas diferentes
+            autoCloseBrackets: true,  // Fechar automaticamente as chaves e parênteses
+            matchBrackets: true       // Destacar os pares de chaves e parênteses
+        });
+    </script>
+    <script src="{{url_for('static', filename='Editor(Json).js')}}"></script>
+</body>
+</html>
